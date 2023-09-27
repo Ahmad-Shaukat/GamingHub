@@ -12,8 +12,5 @@ router.get('/api/csrf/restore', function(req, res) {
     })
     res.send('Hello World!')
 })
-router.post('/test', function (req, res) {
-    res.json({requestBody: req.body})
-})
 
 module.exports = router;
