@@ -36,16 +36,22 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       hashedPassword: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING.Binary,
         allowNull: false,
         validate: {
           len:[60, 60]
         }
       },
     },
+    // default scope is to prevent the access of password at the frontend
     {
       sequelize,
       modelName: "User",
+      defaultScope: {
+        attributes: {
+          exclude:['hashedPassword', 'email', 'createdAt', 'updatedAt'] 
+        }
+      }
     }
   );
   return User;
