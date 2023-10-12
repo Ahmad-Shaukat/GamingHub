@@ -12,7 +12,8 @@ const router = express.Router();
 
 router.post('/', async(req, res, next) => {
     const {credential, password} = req.body;
-    const user = await User.unscoped().findOne({
+    const user = await User.unscoped(
+        ).findOne({
         where: {
             [Op.or]: {
                 username: credential, 
@@ -38,5 +39,13 @@ router.post('/', async(req, res, next) => {
     return res.json({
         user: safeUser
     })
+})
+
+
+//  Log out 
+
+router.delete('/', async(_req, res) => {
+    res.clearCookie('token');
+    return res.json({message: 'success'})
 })
 module.exports = router;
