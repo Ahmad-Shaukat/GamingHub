@@ -10,6 +10,25 @@ const router = express.Router();
 
 // Log In 
 
+//  Restore Session user
+router.get(
+    '/',
+    (req, res) => {
+      const { user } = req;
+      console.log (user)
+      if (user) {
+        const safeUser = {
+          id: user.id,
+          email: user.email,
+          username: user.username,
+        };
+        return res.json({
+          user: safeUser
+        });
+      } else return res.json({ user: null });
+    }
+  );
+  
 router.post('/', async(req, res, next) => {
     const {credential, password} = req.body;
     const user = await User.unscoped(
@@ -48,4 +67,7 @@ router.delete('/', async(_req, res) => {
     res.clearCookie('token');
     return res.json({message: 'success'})
 })
+
+
+
 module.exports = router;
