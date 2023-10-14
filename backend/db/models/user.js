@@ -42,6 +42,17 @@ module.exports = (sequelize, DataTypes) => {
           len:[60, 60]
         }
       },
+      firstName:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+      }
+
     },
     // default scope is to prevent the access of password at the frontend
     {
