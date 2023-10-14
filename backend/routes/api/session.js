@@ -7,29 +7,50 @@ const {User} = require('../../db/models')
 
 const router = express.Router();
 
+const {check} = require('express-validator')
+const {handleValidationErrors} = require('../../utils/validation')
 
-// Log In 
+
+
+
+// Validate login middleware
+const validateLogin = [
+    check('credential')
+        .exists({checkFalsey: true})
+        .notEmpty()
+        .withMessage('Please provide a valid email or username.'),
+    check('password')
+        .exists({checkFalsey: true})
+        .withMessage('Please provide a password'),
+    handleValidationErrors
+]
+
+
 
 //  Restore Session user
 router.get(
     '/',
     (req, res) => {
-      const { user } = req;
-      console.log (user)
-      if (user) {
-        const safeUser = {
-          id: user.id,
-          email: user.email,
-          username: user.username,
-        };
+        const { user } = req;
+        console.log (user)
+        if (user) {
+            const safeUser = {
+                id: user.id,
+                email: user.email,
+                username: user.username,
+            };
         return res.json({
           user: safeUser
         });
-      } else return res.json({ user: null });
-    }
-  );
-  
-router.post('/', async(req, res, next) => {
+    } else return res.json({ user: null });
+}
+);
+
+
+
+
+// Log In 
+router.post('/', validateLogin, async(req, res, next) => {
     const {credential, password} = req.body;
     const user = await User.unscoped(
         ).findOne({
