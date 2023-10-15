@@ -6,13 +6,20 @@ import configureStore from './store';
 
 import { Provider } from 'react';
 import {BrowserRouter} from 'react-router-dom'
+import { restoreCSRF, csrfFetch } from './store/csrf';
 
 const store = configureStore()
 if (process.env.NODE_ENV !== 'production') {
   window.store = store
 }
+if (process.env.NODE !== 'production') {
+  restoreCSRF()
 
-function Root() {
+  window.csrfFetch = csrfFetch
+  window.store = store
+}
+
+function Root () {
   return (
     <Provider store={store}>
       <BrowserRouter>
