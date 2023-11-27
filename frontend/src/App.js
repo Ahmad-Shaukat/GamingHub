@@ -5,7 +5,9 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from './store/session'
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
-
+import LandingPage from "./components/LandingPage";
+import Dashboard from "./components/Dashboard";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 
 
@@ -15,12 +17,19 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
   }, [dispatch])
+  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (
       <Switch>
+        <Route exact path='/'>
+          {
+            sessionUser ? 
+            <Dashboard /> : <LandingPage />
+          }
+        </Route>
       <Route path='/login'>
         <LoginFormPage />
       </Route>
