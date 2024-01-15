@@ -41,6 +41,18 @@ router.post('/new', requireAuth, async(req, res) => {
     res.status(200).json(newPurchase)
 })
 
+
+// Edit a putchase
+
+router.put('/:purchaseId', requireAuth, async(req, res) => {
+    let userId = req.user.dataValues.id
+    let {name, store, date, type, category} = req.body
+    let purchaseId = req.params.purchaseId
+    let newPurchase = await Purchase.findByPk(purchaseId)
+    console.log (newPurchase)
+    res.status(200)
+})
+
 // Delete a purchase 
 router.delete('/:purchaseId', requireAuth, async(req, res) => {
     let userId = req.user.dataValues.id
@@ -61,5 +73,8 @@ router.delete('/:purchaseId', requireAuth, async(req, res) => {
         'statusCode':200
     })
 })
+
+
+
 
 module.exports = router
