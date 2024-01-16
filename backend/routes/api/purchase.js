@@ -49,6 +49,12 @@ router.put('/:purchaseId', requireAuth, async(req, res) => {
     let {name, store, date, type, category} = req.body
     let purchaseId = req.params.purchaseId
     let newPurchase = await Purchase.findByPk(purchaseId)
+
+newPurchase.set({
+        name, store, date, type, category
+    }, {fields: ['name, store, date, type, category']})
+    await newPurchase.save()
+    res.json(newPurchase)
     console.log (newPurchase)
     res.status(200)
 })
