@@ -52,7 +52,7 @@ router.put('/:purchaseId', requireAuth, async(req, res) => {
 
 newPurchase.set({
         name, store, date, type, category
-    }, {fields: ['name, store, date, type, category']})
+    }, {fields: ['name', 'store', 'date', 'type', 'category']})
     await newPurchase.save()
     res.json(newPurchase)
     console.log (newPurchase)
@@ -60,7 +60,7 @@ newPurchase.set({
 })
 
 // Delete a purchase 
-router.delete('/:purchaseId', requireAuth, async(req, res) => {
+router.delete('/:purchaseId/delete', async(req, res) => {
     let userId = req.user.dataValues.id
     let purchaseId = req.params.purchaseId
     const purchaseValue = await Purchase.findByPk(purchaseId)
