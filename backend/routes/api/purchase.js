@@ -42,7 +42,7 @@ router.post('/new', requireAuth, async(req, res) => {
 })
 
 
-// Edit a putchase
+// Edit a purchase
 
 router.put('/:purchaseId', requireAuth, async(req, res) => {
     let userId = req.user.dataValues.id
@@ -60,7 +60,7 @@ newPurchase.set({
 })
 
 // Delete a purchase 
-router.delete('/:purchaseId/delete', async(req, res) => {
+router.delete('/:purchaseId/delete', requireAuth, async(req, res) => {
     let userId = req.user.dataValues.id
     let purchaseId = req.params.purchaseId
     const purchaseValue = await Purchase.findByPk(purchaseId)
