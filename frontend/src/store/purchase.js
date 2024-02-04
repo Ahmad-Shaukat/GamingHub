@@ -2,7 +2,8 @@ import {csrfFetch} from './csrf'
 const GET_PURCHASE = 'purchase/GET_PURCHASES'
 const ADD_PURCHASE = 'purchase/ADD_PURCHASE'
 const REMOVE_PURCHASE = 'purchase/REMOVE_PURCHASE'
-const clear_Purchase = 'purchase/CLEAR_PURCHASE'
+const CLEAR_PURCHASE = 'purchase/CLEAR_PURCHASE'
+const EDIT_PURCHASE = 'purchase/EDIT_PURCHASE'
 
 export const getAllPurchases = (purchases) => {
     return {
@@ -16,6 +17,17 @@ export const addPurchase = (purchase) => {
         payload: purchase
     }
 }
+
+// action for editing the purchase 
+
+export const editPurchase = (purchase) => {
+    return {
+        type: EDIT_PURCHASE,
+        payload: purchase
+    }
+}
+
+
 export const deletePurchase = (purchase) => {
     return {
         type: REMOVE_PURCHASE,
@@ -24,25 +36,38 @@ export const deletePurchase = (purchase) => {
 }
 export const clearPurchase = () => {
     return {
-        type: clear_Purchase
+        type: CLEAR_PURCHASE
     }
 }
 
+
+
 export const getAllPurchase = () => 
-    async(dispatch) => {
-        const response = await fetch ('/api/purchase/current')
-        if (response.ok) {
-            const purchases = await response.json()
-            await dispatch(getAllPurchases(purchases))
-            return purchases
-        }
+async(dispatch) => {
+    const response = await fetch ('/api/purchase/current')
+    if (response.ok) {
+        const purchases = await response.json()
+        await dispatch(getAllPurchases(purchases))
+        return purchases
+    }
     
 }
 
 
-
-
-
+// Thunk for editing purchase 
+export const editPurchaseThunk = (purchase, id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/purchase/${id}`, {
+        method:'PUT',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(purchase)
+    })
+    if (response.ok) {
+        const editPurchase = await response.json()
+        dispatch(editPurchase(purchase))
+    }
+}
 
 export default function purchaseReducer (state={}, action) {
     let newState = {}
