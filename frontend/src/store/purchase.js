@@ -69,6 +69,23 @@ export const editPurchaseThunk = (purchase, id) => async(dispatch) => {
     }
 }
 
+
+// Thunk for adding new purchase
+
+export const addPurchaseThunk = (purchase) => async dispatch => {
+    const response = await csrfFetch('/api/purchase/new', {
+        method: 'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(purchase)
+    })
+    if (response.ok) {
+        const purchase = await response.json()
+        dispatch(addPurchase(purchase))
+    }
+}
+
 export default function purchaseReducer (state={}, action) {
     let newState = {}
     switch(action.type) {
