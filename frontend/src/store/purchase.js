@@ -28,10 +28,10 @@ export const editPurchase = (purchase) => {
 }
 
 
-export const deletePurchase = (purchase) => {
+export const deletePurchase = (purchaseId) => {
     return {
         type: REMOVE_PURCHASE,
-        payload: purchase
+        payload: purchaseId
     }
 }
 export const clearPurchase = () => {
@@ -83,6 +83,21 @@ export const addPurchaseThunk = (purchase) => async dispatch => {
     if (response.ok) {
         const purchase = await response.json()
         dispatch(addPurchase(purchase))
+    }
+}
+
+
+// thunk for deleteing the purchase 
+
+export const deletePurchaseThunk = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/purchase/${id}`, {
+        method:'DELETE',
+        headers: {
+            'Content-Type':'application/json'
+        }
+    })
+    if (response.ok) {
+        dispatch(deletePurchase(id))
     }
 }
 
