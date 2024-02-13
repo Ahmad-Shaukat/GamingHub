@@ -29,6 +29,17 @@ const Dashboard = () => {
 
     return (
         <>
+        <main>
+            <div>
+                <h1>Dashboard</h1>
+            </div>
+            <div>
+                <h2>Latest Transactions</h2>
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </main>
         
         <h1>This is dashboard</h1>
         </>

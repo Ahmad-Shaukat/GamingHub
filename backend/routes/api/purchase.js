@@ -13,7 +13,8 @@ const {Sequelize} = require('sequelize')
 router.get('/current', restoreUser, async(req, res) => {
     let userId = req.user.dataValues.id
     const userPurchases = await Purchase.findAll({
-        where:{userId: userId}
+        where:{userId: userId},
+        include:Category
     })
     console.log (userId, '---------------this is the user')
     console.log (userPurchases, '-------------these are user purchases')

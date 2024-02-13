@@ -12,10 +12,12 @@ import {useSelector} from 'react-redux'
 
 
 const LandingPage = () => {
-    const dispatch = useDispatch()
-    const allPurchases  = useSelector(state => {
-        return state.purchase
-    })
+    // const dispatch = useDispatch()
+    // const allPurchases  = useSelector(state => {
+    //     return state.purchase
+    // })
+
+    // console.log (allPurchases)
 
     return (
         <>
