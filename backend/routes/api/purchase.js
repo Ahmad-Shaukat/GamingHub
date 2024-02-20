@@ -72,8 +72,6 @@ router.delete('/:purchaseId/delete', requireAuth, async(req, res) => {
             "statusCode": 404
         })
     }
-    // console.log (purchaseValue.dataValues, '-----------this is the purchase value')
-
     await purchaseValue.destroy()
     res.status(200).json({
         "message":"Successfully deleted",

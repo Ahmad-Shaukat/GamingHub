@@ -124,7 +124,5 @@ export default function purchaseReducer (state={}, action) {
             return newState
         default:
             return state
-                
-
     }
 }

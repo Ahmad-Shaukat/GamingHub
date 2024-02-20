@@ -16,9 +16,9 @@ const Dashboard = () => {
     let purchases = useSelector ((store) => store.purchase)
     console.log (user, '-----------this is user')
     // console.log (purchases, '-------these are purchases')
-    useEffect(async () => dispatch(getAllPurchase()), [dispatch])
-    purchases = Object.values(purchases)
-    console.log (purchases, '------------these are purchases')
+    // useEffect(async () => dispatch(getAllPurchase()), [dispatch])
+    // purchases = Object.values(purchases)
+    // console.log (purchases, '------------these are purchases')
 
 
 
