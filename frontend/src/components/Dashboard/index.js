@@ -13,13 +13,40 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
-    let purchases = useSelector ((store) => store)
+    let purchases = useSelector ((store) => store.purchase)
+    purchases = Object.values(purchases)
     console.log (user, '-----------this is user')
-    console.log (purchases, 'this is the purchases')
+    console.log (Object.values(purchases), 'this is the purchases')
     // console.log (purchases, '-------these are purchases')
     useEffect( () => {
         dispatch(getAllPurchase())
     }, [])
+
+
+
+
+    if (purchases) {
+        return (
+            <>
+            <div>
+                <h1>Purchases</h1>
+                {purchases.map((transaction) => (
+                    <div key={transaction.id}>
+                        <p>{transaction.date}</p>
+                        <p>{transaction.name}</p>
+                        <p>{transaction.store}</p>
+                        <p>{transaction.type}</p>
+                    </div>
+                ))}
+
+            </div>
+            
+            </>
+        )
+    }
+
+
+
     // purchases = Object.values(purchases)
     // console.log (purchases, '------------these are purchases')
 
