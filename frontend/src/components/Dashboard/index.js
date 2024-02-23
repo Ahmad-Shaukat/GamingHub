@@ -13,10 +13,13 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
-    let purchases = useSelector ((store) => store.purchase)
+    let purchases = useSelector ((store) => store)
     console.log (user, '-----------this is user')
+    console.log (purchases, 'this is the purchases')
     // console.log (purchases, '-------these are purchases')
-    // useEffect(async () => dispatch(getAllPurchase()), [dispatch])
+    useEffect( () => {
+        dispatch(getAllPurchase())
+    }, [])
     // purchases = Object.values(purchases)
     // console.log (purchases, '------------these are purchases')
 
