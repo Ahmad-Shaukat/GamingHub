@@ -13,8 +13,10 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
-    let purchases = useSelector ((store) => store.purchase)
-    purchases = Object.values(purchases)
+    let allPurchases = useSelector (state => {
+        return state?.purchase
+    })
+    let purchases = Object.values(allPurchases)
     console.log (user, '-----------this is user')
     console.log (Object.values(purchases), 'this is the purchases')
     // console.log (purchases, '-------these are purchases')
@@ -23,43 +25,12 @@ const Dashboard = () => {
     }, [])
 
 
-
-
-    if (purchases) {
-        return (
-            <>
-            <div>
-                <h1>Purchases</h1>
-                {purchases.map((transaction) => (
-                    <div key={transaction.id}>
-                        <p>{transaction.date}</p>
-                        <p>{transaction.name}</p>
-                        <p>{transaction.store}</p>
-                        <p>{transaction.type}</p>
-                    </div>
-                ))}
-
-            </div>
-            
-            </>
-        )
-    }
-
-
-
-    // purchases = Object.values(purchases)
-    // console.log (purchases, '------------these are purchases')
-
-
-
-    // Commit message 'add frontend for get all the purchases'
-
-
     
 
-    return (
-        <>
-        <main>
+    if (allPurchases) {
+        return (
+            <>
+            <main>
             <div>
                 <h1>Dashboard</h1>
             </div>
@@ -69,11 +40,35 @@ const Dashboard = () => {
                     <div></div>
                 </div>
             </div>
-        </main>
-        
-        <h1>This is dashboard</h1>
-        </>
+
+
+            <div>
+                
+                {purchases.map((transaction) => (
+                    <div key={transaction.id}>
+                        <p>{transaction.date.split("T")[0]}</p>
+                        <p>{transaction.name}</p>
+                        <p>{transaction.store}</p>
+                        <p>{transaction.type}</p>
+                    </div>
+                ))}
+
+            </div>
+
+            </main>
+            
+            
+            </>
+        )
+    } 
+    return (
+        <div>
+            <h3>Loading</h3>
+        </div>
     )
+
+
+
 }
 
 
