@@ -110,8 +110,19 @@ export default function purchaseReducer (state={}, action) {
                 newState[purchase.id] = purchase
             })
             return newState
+        case ADD_PURCHASE:
+            newState = {...state}
+            newState[action.payload.id] = action.payload
+            return newState
+
+        case REMOVE_PURCHASE:
+            newState = {...state}
+            delete newState[action.payload.id]
+            return newState
+        case CLEAR_PURCHASE:
+            newState = {}
+            return newState
         default:
             return state
-
     }
 }
