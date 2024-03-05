@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 
 /** @type {import('sequelize-cli').Migration} */
 let options = {}
-if (process.env.Node_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.schema
 } 
 

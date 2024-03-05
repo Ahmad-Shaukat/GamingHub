@@ -1,10 +1,9 @@
 'use strict';
-const { mapFinderOptions } = require('sequelize/types/utils');
 const {Profile} = require('../models')
 /** @type {import('sequelize-cli').Migration} */
 let options = {}
-if (process.env.Node_ENV === 'production') {
-  options.schema = process.env.schema
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA
 }
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -22,7 +21,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    options.tablename = 'Profiles'
+    options.tableName = 'Profiles'
     const Op = Sequelize.Op
     
     return queryInterface.bulkDelete(options, {
