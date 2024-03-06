@@ -1,9 +1,11 @@
 'use strict';
 const {Profile} = require('../models')
 /** @type {import('sequelize-cli').Migration} */
+const bcrypt = require('bcryptjs')
+
 let options = {}
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA
+  options.schema = process.env.schema
 }
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -13,7 +15,7 @@ module.exports = {
         salary:5000
       },
       {
-        userrId: 2,
+        userId: 2,
         salary: 4000
       }
     ])
@@ -28,6 +30,6 @@ module.exports = {
       userId: {
         [Op.in]: [1, 2]
       }
-    })
+    }, {})
   }
 };
