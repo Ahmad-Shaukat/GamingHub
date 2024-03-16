@@ -9,10 +9,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Purchase.belongsTo(models.Category, {
-        foreignKey: 'categoryId',
-        // onDelete: "CASCADE",
-      });
       Purchase.belongsTo(models.User, {
         foreignKey: 'userId',
         // onDelete: 'CASCADE'
@@ -22,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
   Purchase.init(
     {
       userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      categoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
