@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      store: {
+      category: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       date: {
         type: DataTypes.DATE,

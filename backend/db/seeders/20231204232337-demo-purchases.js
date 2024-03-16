@@ -13,7 +13,7 @@ module.exports = {
     await Purchase.bulkCreate([
       {
         userId: 1,
-        categoryId: 1,
+        category: 'Shopping',
         name: 'Ipad',
         store: 'BestBuy',
         date: new  Date(),
@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         userId: 1,
-        categoryId: 2,
+        category: 'Food',
         name: 'BigMac',
         store: 'Burger King',
         date: new  Date(),
@@ -29,7 +29,7 @@ module.exports = {
       },
       {
         userId: 2,
-        categoryId: 3,
+        category: 'Shopping',
         name: 'Curtains',
         store: 'Macys',
         date: new  Date(),
@@ -37,9 +37,8 @@ module.exports = {
       },
       {
         userId: 2,
-        categoryId: 4,
-        name: 'Long Coat',
-        store: 'G-Raw',
+        category: 'Bills',
+        name: 'Electricity Bill',
         date: new  Date(),
         type: 'credit'
       }

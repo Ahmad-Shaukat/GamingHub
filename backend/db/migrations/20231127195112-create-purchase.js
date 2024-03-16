@@ -17,21 +17,14 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      categoryId: {
-        allowNull: false,
-        type: Sequelize.INTEGER, 
-        references: {
-          model: 'Categories'
-        },
-        onDelete: 'CASCADE'
-      },
       name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      store: {
-        type: Sequelize.STRING,
-        allowNull: false
+      category: {
+        allowNull: false,
+        type: Sequelize.STRING, 
+     
       },
       date: {
         type: Sequelize.DATE,
