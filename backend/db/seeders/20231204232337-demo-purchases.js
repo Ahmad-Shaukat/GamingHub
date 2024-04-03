@@ -16,31 +16,27 @@ module.exports = {
         category: 'Shopping',
         name: 'Ipad',
         store: 'BestBuy',
-        date: new  Date(),
-        type: 'cash'
+        date: new  Date()
       },
       {
         userId: 1,
         category: 'Food',
         name: 'BigMac',
         store: 'Burger King',
-        date: new  Date(),
-        type: 'credit'
+        date: new  Date()
       },
       {
         userId: 2,
         category: 'Shopping',
         name: 'Curtains',
         store: 'Macys',
-        date: new  Date(),
-        type: 'credit'
+        date: new  Date()
       },
       {
         userId: 2,
         category: 'Bills',
         name: 'Electricity Bill',
-        date: new  Date(),
-        type: 'credit'
+        date: new  Date()
       }
 
     ])

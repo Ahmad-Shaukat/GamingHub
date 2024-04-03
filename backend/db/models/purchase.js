@@ -32,11 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       date: {
         type: DataTypes.DATE,
         allowNull: false,
-      },
-      type: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      }
     },
     {
       sequelize,
