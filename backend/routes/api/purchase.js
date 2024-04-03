@@ -40,6 +40,7 @@ router.post('/new', requireAuth, async(req, res) => {
     console.log (categoryId, '---------this is the purchase category')
     console.log(newPurchase, 'this is the new purchase--------------')
     res.status(200).json(newPurchase)
+
 })
 
 
