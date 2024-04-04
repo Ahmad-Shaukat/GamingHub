@@ -20,5 +20,20 @@ router.get('/current', requireAuth, async(req, res) => {
 })
 
 
+// edit the user profile information 
+router.put('/edit', requireAuth, async(req, res) => {
+    // find the profile 
+    let userId = req.userId.dataValues.id
+    let {salary} = req.body
+    const userProfile = await Profile.findOne({
+        where:{id:userId}
+    })
+    userProfile.salary = salary
+    await userProfile.save()
+    res.status(204).json(userProfile)
+
+})
+
+
 
 module.exports=router
