@@ -1,5 +1,6 @@
 const GET_PROFILE = 'profile/GET_PROFILE'
 const EDIT_PROFILE = 'profile/EDIT_PROFILE'
+const CLEAR_PROFILE = 'profile/CLEAR_PROFILE'
 // const ADD_PROFILE = 'profile/ADD_PROFILE'
 
 
@@ -17,6 +18,15 @@ export const editProfile = (profile) => {
     }
 }
 
+export const clearProfile = () => {
+    return {
+        type: CLEAR_PROFILE
+    }
+}
+
+
+
+// Thunk for getting profile information
 
 
 export const getProfileThunk = () => async (dispatch) => {
@@ -27,6 +37,8 @@ export const getProfileThunk = () => async (dispatch) => {
         return userProfile
     }
 }
+
+// Thunk for updating profile information
 
 export const editProfileThunk = (updatedProfile) => async (dispatch) => {
     const response = await fetch ('/api/profile/edit', {
@@ -42,3 +54,28 @@ export const editProfileThunk = (updatedProfile) => async (dispatch) => {
         return data
     }
 }
+
+
+// Reducer Funtion 
+
+export default function pofileReducer (state={}, action) {
+    let newState = {}
+    switch(action.type) {
+        case GET_PROFILE:
+            newState = {...state}
+            newState['profile'] = action.payload
+            return newState
+        case GET_PROFILE:
+            newState = {...state}
+            newState['profile'] = action.payload
+            return newState
+        case CLEAR_PROFILE:
+            newState = {}
+            return newState
+        default:
+            return state  
+    }
+        
+}
+
+

@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import * as sessionActions from '../../store/session';
 import './style.css';
+import { clearProfile } from '../../store/profile';
+import { clearPurchase } from '../../store/purchase';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -13,6 +15,8 @@ function Navigation({ isLoaded }){
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(clearProfile())
+    dispatch(clearPurchase())
   };
 
   let sessionLinks;

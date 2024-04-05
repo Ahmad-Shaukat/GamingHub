@@ -5,6 +5,7 @@ import {useHistory} from 'react-router-dom'
 // import { UseSelector } from 'react-redux/es/hooks/useSelector';
 import { getAllPurchase } from '../../store/purchase';
 import { useEffect } from 'react';
+import { getProfileThunk } from '../../store/profile';
 
 
 
@@ -22,6 +23,7 @@ const Dashboard = () => {
     // console.log (purchases, '-------these are purchases')
     useEffect( () => {
         dispatch(getAllPurchase())
+        dispatch(getProfileThunk())
     }, [])
 
 
