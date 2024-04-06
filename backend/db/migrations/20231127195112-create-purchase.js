@@ -27,7 +27,7 @@ module.exports = {
      
       },
       amount: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         allowNull: false
       },
       date: {
