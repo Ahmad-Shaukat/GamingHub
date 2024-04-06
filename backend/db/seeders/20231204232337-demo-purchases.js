@@ -14,51 +14,34 @@ module.exports = {
       {
         userId: 1,
         category: 'Shopping',
-        name: 'Ipad',
-        store: 'BestBuy',
-        date: new  Date()
+        name: 'BestBuy',
+        date: new  Date(),
+        amount: 200
       },
       {
         userId: 1,
         category: 'Food',
-        name: 'BigMac',
-        store: 'Burger King',
-        date: new  Date()
+        name: 'Burger King',
+        date: new  Date(),
+        amount: 36.75
       },
       {
         userId: 2,
         category: 'Shopping',
-        name: 'Curtains',
-        store: 'Macys',
-        date: new  Date()
+        name: 'Macys',
+        date: new  Date(),
+        amount: 14.50
       },
       {
         userId: 2,
         category: 'Bills',
         name: 'Electricity Bill',
-        date: new  Date()
+        date: new  Date(),
+        amount: 60.75
       }
 
     ])
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-
-  },
-  
-
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+   
   },
 
   async down(queryInterface, Sequelize) {

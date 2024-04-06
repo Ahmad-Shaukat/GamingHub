@@ -17,7 +17,7 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      name: {
+      store: {
         type: Sequelize.STRING,
         allowNull: false
       },
@@ -25,6 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING, 
      
+      },
+      amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       date: {
         type: Sequelize.DATE,
