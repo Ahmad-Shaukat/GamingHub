@@ -14,13 +14,14 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
-    let allPurchases = useSelector (state => {
-        return state?.purchase
+    let allPurchases = useSelector (store => {
+        return store
     })
     let purchases = Object.values(allPurchases)
-    console.log (user, '-----------this is user')
-    console.log (Object.values(purchases), 'this is the purchases')
-    // console.log (purchases, '-------these are purchases')
+    // console.log (user, '-----------this is user')
+    // console.log (Object.values(purchases), 'this is the purchases')
+    console.log (purchases, '-------these are purchases')
+
     useEffect( () => {
         dispatch(getAllPurchase())
         dispatch(getProfileThunk())
@@ -46,14 +47,14 @@ const Dashboard = () => {
 
             <div>
                 
-                {purchases.map((transaction) => (
+                {/* {purchases.map((transaction) => (
                     <div key={transaction.id}>
                         <p>{transaction.date.split("T")[0]}</p>
                         <p>{transaction.name}</p>
                         <p>{transaction.store}</p>
                         <p>{transaction.type}</p>
                     </div>
-                ))}
+                ))} */}
 
             </div>
 

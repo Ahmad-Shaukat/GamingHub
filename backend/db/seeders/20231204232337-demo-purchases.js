@@ -14,28 +14,28 @@ module.exports = {
       {
         userId: 1,
         category: 'Shopping',
-        storels: 'BestBuy',
+        store: 'BestBuy',
         date: new  Date(),
         amount: 200
       },
       {
         userId: 1,
         category: 'Food',
-        storels: 'Burger King',
+        store: 'Burger King',
         date: new  Date(),
         amount: 36.75
       },
       {
         userId: 2,
         category: 'Shopping',
-        storels: 'Macys',
+        store: 'Macys',
         date: new  Date(),
         amount: 14.50
       },
       {
         userId: 2,
         category: 'Bills',
-        storels: 'Electricity Bill',
+        store: 'Electricity Bill',
         date: new  Date(),
         amount: 60.75
       }
