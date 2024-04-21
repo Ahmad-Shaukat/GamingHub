@@ -18,7 +18,6 @@ router.get('/current', restoreUser, async(req, res) => {
     })
 
 
-    console.log (userPurchases, '-----------these are user purchases')
     
     res.status(200).json(userPurchases)
 })
