@@ -6,6 +6,7 @@ import {useHistory} from 'react-router-dom'
 import { getAllPurchase } from '../../store/purchase';
 import { useEffect } from 'react';
 import { getProfileThunk } from '../../store/profile';
+import { useState } from 'react';
 
 
 
@@ -14,6 +15,8 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
+    const [creatSpending, setCreateSpending] = useState(false)
+    const [showAddSpending, setShowAddSpending] = useState(true)
     let allPurchases = useSelector (state => {
         return state.purchase
     })
@@ -27,6 +30,11 @@ const Dashboard = () => {
         dispatch(getProfileThunk())
     }, [])
 
+    const onAddSpending =  () =>  {
+        setShowAddSpending(false)
+        setCreateSpending(true)
+    }
+
 
     
 
@@ -38,7 +46,7 @@ const Dashboard = () => {
                 <h1>Dashboard</h1>
             </div>
             <div>
-                <h2>Latest Transactions</h2>
+                <h2>Latest Spendings</h2>
                 <div>
                     <div></div>
                 </div>
@@ -57,6 +65,20 @@ const Dashboard = () => {
                 ))}
 
             </div>
+            {
+                showAddSpending && 
+                <div>
+                <button onClick={() => onAddSpending()}>Add Spending</button>
+            </div>
+            }
+            
+            {
+                creatSpending &&
+                <div>
+                    <h3>spending Form goes Here</h3>
+                </div>
+            }
+           
 
             </main>
             
