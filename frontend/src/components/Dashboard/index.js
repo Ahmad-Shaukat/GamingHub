@@ -5,6 +5,9 @@ import {useHistory} from 'react-router-dom'
 // import { UseSelector } from 'react-redux/es/hooks/useSelector';
 import { getAllPurchase } from '../../store/purchase';
 import { useEffect } from 'react';
+import { getProfileThunk } from '../../store/profile';
+import { useState } from 'react';
+import AddSpendingForm from '../AddSpendingForm';
 
 
 
@@ -13,16 +16,25 @@ const Dashboard = () => {
     const dispatch = useDispatch()
     const hisory = useHistory()
     let user = useSelector((store) => store.session.user)
+    const [creatSpending, setCreateSpending] = useState(false)
+    const [showAddSpending, setShowAddSpending] = useState(true)
     let allPurchases = useSelector (state => {
-        return state?.purchase
+        return state.purchase
     })
     let purchases = Object.values(allPurchases)
-    console.log (user, '-----------this is user')
-    console.log (Object.values(purchases), 'this is the purchases')
-    // console.log (purchases, '-------these are purchases')
+    // console.log (user, '-----------this is user')
+    // console.log (Object.values(purchases), 'this is the purchases')
+    console.log (purchases, '-------these are purchases')
+
     useEffect( () => {
         dispatch(getAllPurchase())
+        dispatch(getProfileThunk())
     }, [])
+
+    const onAddSpending =  () =>  {
+        setShowAddSpending(false)
+        setCreateSpending(true)
+    }
 
 
     
@@ -35,7 +47,7 @@ const Dashboard = () => {
                 <h1>Dashboard</h1>
             </div>
             <div>
-                <h2>Latest Transactions</h2>
+                <h2>Latest Spendings</h2>
                 <div>
                     <div></div>
                 </div>
@@ -46,14 +58,28 @@ const Dashboard = () => {
                 
                 {purchases.map((transaction) => (
                     <div key={transaction.id}>
-                        <p>{transaction.date.split("T")[0]}</p>
-                        <p>{transaction.name}</p>
+                        {/* <p>{transaction.date.split("T")[0]}</p> */}
                         <p>{transaction.store}</p>
-                        <p>{transaction.type}</p>
+                        <p>{transaction.category}</p>
+                        <p>{transaction.amount}</p>
                     </div>
                 ))}
 
             </div>
+            {
+                showAddSpending && 
+                <div>
+                <button onClick={() => onAddSpending()}>Add Spending</button>
+            </div>
+            }
+            
+            {
+                creatSpending &&
+                <div>
+                    <AddSpendingForm />
+                </div>
+            }
+           
 
             </main>
             

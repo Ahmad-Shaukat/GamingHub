@@ -16,8 +16,9 @@ router.get('/current', restoreUser, async(req, res) => {
         where:{userId: userId},
         include:Category
     })
-    console.log (userId, '---------------this is the user')
-    console.log (userPurchases, '-------------these are user purchases')
+
+
+    
     res.status(200).json(userPurchases)
 })
 
@@ -37,9 +38,8 @@ router.post('/new', requireAuth, async(req, res) => {
        userId, categoryId, name, store, date, type, 
     })
 
-    console.log (categoryId, '---------this is the purchase category')
-    console.log(newPurchase, 'this is the new purchase--------------')
     res.status(200).json(newPurchase)
+
 })
 
 

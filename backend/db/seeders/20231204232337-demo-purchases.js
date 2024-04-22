@@ -13,57 +13,35 @@ module.exports = {
     await Purchase.bulkCreate([
       {
         userId: 1,
-        categoryId: 1,
-        name: 'Ipad',
+        category: 'Shopping',
         store: 'BestBuy',
         date: new  Date(),
-        type: 'cash'
+        amount: 200
       },
       {
         userId: 1,
-        categoryId: 2,
-        name: 'BigMac',
+        category: 'Food',
         store: 'Burger King',
         date: new  Date(),
-        type: 'credit'
+        amount: 36.75
       },
       {
         userId: 2,
-        categoryId: 3,
-        name: 'Curtains',
+        category: 'Shopping',
         store: 'Macys',
         date: new  Date(),
-        type: 'credit'
+        amount: 14.50
       },
       {
         userId: 2,
-        categoryId: 4,
-        name: 'Long Coat',
-        store: 'G-Raw',
+        category: 'Bills',
+        store: 'Electricity Bill',
         date: new  Date(),
-        type: 'credit'
+        amount: 60.75
       }
 
     ])
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-
-  },
-  
-
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+   
   },
 
   async down(queryInterface, Sequelize) {
