@@ -7,6 +7,7 @@ import { getAllPurchase } from '../../store/purchase';
 import { useEffect } from 'react';
 import { getProfileThunk } from '../../store/profile';
 import { useState } from 'react';
+import AddSpendingForm from '../AddSpendingForm';
 
 
 
@@ -75,7 +76,7 @@ const Dashboard = () => {
             {
                 creatSpending &&
                 <div>
-                    <h3>spending Form goes Here</h3>
+                    <AddSpendingForm />
                 </div>
             }
            
