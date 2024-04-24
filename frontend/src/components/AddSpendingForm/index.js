@@ -8,19 +8,19 @@ const [category, setCategory] = useState('')
 const [storeName, setStoreName] = useState('')
 const [amount, setAmount] = useState(0)
 
-const onSubmit = (e) => {
+const createSpendingSubmit = async (e) => {
     e.preventDefault()
-    let purchaseInfo = {
-        category, storeName, amount
-    }
-    console.log (purchaseInfo, '--------------this is new purchase') 
+    // let purchaseInfo = {
+    //     category, storeName, amount
+    // }
+    console.log ('checking the function') 
 }
 
 
     return (
 
         <div>
-            <form>
+            <form onSubmit={createSpendingSubmit}>
                 <div>
                     <label>Store Name</label>
                     <input type="text"></input>
@@ -46,7 +46,7 @@ const onSubmit = (e) => {
                     <input type="number"></input>
                 </div>
                 <div>
-                    <button type="submit" onClick={onSubmit()}>
+                    <button type="submit">
                     Add 
                     </button>
                 </div>
