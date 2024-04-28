@@ -12,11 +12,13 @@ module.exports = {
     await Profile.bulkCreate([
       {
         userId:1,
-        salary:5000
+        wallet: 40
+        
       },
       {
         userId: 2,
-        salary: 4000
+        wallet: 20
+        
       }
     ])
  

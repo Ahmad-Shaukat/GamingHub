@@ -17,7 +17,8 @@ module.exports = {
         }, 
         onDelete: 'CASCADE'
       }, 
-      salary: {
+      wallet: {
+        allowNull: false, 
         type: Sequelize.INTEGER
       },
       createdAt: {
