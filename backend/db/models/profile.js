@@ -22,10 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER, 
       allowNull: false
     },
-    salary: {
-      type: DataTypes.INTEGER,
+    wallet:{
+      type:DataTypes.INTEGER, 
       allowNull: false
-    },
+    }
+ 
     
   }, {
     sequelize,
